@@ -41,7 +41,7 @@ class MainFragment : Fragment(), MainAdapter.OnMovieClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
-        setupSearchView()
+
         setupObservers()
     }
 
@@ -91,18 +91,7 @@ class MainFragment : Fragment(), MainAdapter.OnMovieClickListener {
         })
     }
 
-    private fun setupSearchView() {
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                viewModel.setMovie(query!!)
-                return false
-            }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-        })
-    }
 
     private fun setupRecyclerView() {
         rv_movies.layoutManager = LinearLayoutManager(requireContext())
@@ -127,11 +116,10 @@ class MainFragment : Fragment(), MainAdapter.OnMovieClickListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_sort -> showSortDialog()
+
             R.id.menu_favorites ->
                 findNavController().navigate(R.id.action_mainFragment_to_favoritesFragment)
-            R.id.menu_settings ->
-                findNavController().navigate(R.id.action_mainFragment_to_settingsFragment)
+
             R.id.menu_about ->
                 findNavController().navigate(R.id.action_mainFragment_to_aboutFragment)
             else -> return true
@@ -140,24 +128,5 @@ class MainFragment : Fragment(), MainAdapter.OnMovieClickListener {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun showSortDialog() {
-        var mResult: String = ""
-        val listItems = resources.getStringArray(R.array.sort_values_array)
-        val listener = DialogInterface.OnClickListener { dialogInterface, i ->
-            mResult = listItems.get(i)
-        }
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle(resources.getString(R.string.shortdialog_title))
-            .setSingleChoiceItems(listItems, -1, listener)
-            .setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
-                if(adapter.itemCount>0)
-                adapter.sortMovies(mResult)
-            })
-            .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which ->
-                builder.setCancelable(true)
-            })
 
-        builder.create()
-        builder.show()
-    }
 }

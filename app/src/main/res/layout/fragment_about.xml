@@ -18,6 +18,6 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/tmdb_logo"
         android:paddingTop="16dp"
-        android:text="This app uses the TMDb API but is not endorsed or certified by TMDb. Made by @damrek with educational purposes." />
+        android:text="This app uses the TMDb API ." />
 
 </RelativeLayout>

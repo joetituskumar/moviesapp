@@ -19,7 +19,7 @@ class MainViewModel @ViewModelInject constructor(private val repo: Repo) : ViewM
     }
 
     init {
-//        setMovie("")
+
     }
 
     val fetchMoviesList = liveData(Dispatchers.IO) {

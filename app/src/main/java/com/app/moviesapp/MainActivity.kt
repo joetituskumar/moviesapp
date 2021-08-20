@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         navController = findNavController(R.id.nav_host_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
-        //Log.d("webService", "${webService.hashCode()}" )
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
