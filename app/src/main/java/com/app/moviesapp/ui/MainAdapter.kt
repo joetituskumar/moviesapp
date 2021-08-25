@@ -27,13 +27,7 @@ class MainAdapter(
         notifyItemRangeChanged(position, itemCount)
     }
 
-    fun sortMovies(type:String){
-        when(type){
-            "Alphabetically" ->  moviesList.sortBy { it -> it.name  }
-            "Votes average" ->  moviesList.sortByDescending { it -> it.voteAverage  }
-        }
-        notifyDataSetChanged()
-    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         return MainViewHolder(

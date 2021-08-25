@@ -120,8 +120,7 @@ class MainFragment : Fragment(), MainAdapter.OnMovieClickListener {
             R.id.menu_favorites ->
                 findNavController().navigate(R.id.action_mainFragment_to_favoritesFragment)
 
-            R.id.menu_about ->
-                findNavController().navigate(R.id.action_mainFragment_to_aboutFragment)
+
             else -> return true
         }
 
